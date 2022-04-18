@@ -1,3 +1,4 @@
+from regex import P
 from twitter import generate_tweets
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import pandas as pd
@@ -31,6 +32,27 @@ def get_top_n_names(pos, n=20):
 
     return formatted_names
 
+def generate_sentiment_scores(pos, n=20):
+    data = dict()
+    top_players_at_pos = get_top_n_names(pos, n)
+    for player in top_players_at_pos:
+        data[player[0]] = {
+            'pos': 0,
+            'neg': 0,
+            'neutral': 0,
+            'num_tweets': 0
+        }
+
+        tweets = generate_tweets(player)
+        sid = SentimentIntensityAnalyzer()
+        for tweet in tweets:
+            polarity_score = sid.polarity_scores(tweet)
+            data[player[0]]['pos'] += polarity_score.get('pos', 0)
+            data[player[0]]['neg'] += polarity_score.get('neg', 0)
+            data[player[0]]['neutral'] += polarity_score.get('neutral', 0)
+            data[player[0]]['num_tweets'] += 1
+
+    return data
 
 print(
     get_top_n_names('QB')
