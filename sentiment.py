@@ -1,9 +1,8 @@
-from regex import P
 from twitter import generate_tweets
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import pandas as pd
 
-WEEKLY_BASE_URL = '../data/weekly/2019/week{}.csv'
+WEEKLY_BASE_URL = 'C:/data_v2/weekly/2019/week{}.csv'
 
 def generate_full_season_df():
     df = pd.DataFrame()

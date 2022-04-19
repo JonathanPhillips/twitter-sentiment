@@ -50,9 +50,9 @@ def generate_tweets(search, analysts=config.ANALYSTS):
     )
 
     tweets = res.json().get('statuses')
-
+    
     parsed_tweets = []
-
+    
     for tweet in tweets:
         truncated = tweet.get('truncated')
         text = tweet.get('text')
@@ -67,8 +67,6 @@ def generate_tweets(search, analysts=config.ANALYSTS):
     return parsed_tweets
 
 if __name__ == '__main__': # this file is not being imported
-    pass
-
-pprint.pprint(
-    generate_tweets(['Aaron Jones', 'A. Jones']) # test our code here
+    pprint.pprint(
+        generate_tweets(['Matt Ryan', 'M. Ryan']) # test our code here
 )

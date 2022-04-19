@@ -17,4 +17,4 @@ for p in positions:
 
     df = pd.concat([df, pos_df])
 
-df.to_csv('data/sentiment.csv')
+df.to_csv('c:/data/sentiment.csv')
