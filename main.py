@@ -1,4 +1,3 @@
-from turtle import position
 from sentiment import generate_sentiment_scores
 import pandas as pd
 from nltk_install import nltk_install
